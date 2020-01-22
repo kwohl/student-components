@@ -74,13 +74,26 @@ const students = [
 ]
 
 
-const createStudentComponent = (name, subject, info, score) => {
+// const createStudentComponent = (name, subject, info, score) => {
+//     return `
+//         <div class="student">
+//             <h1 class="name">${name}</h1>
+//             <section class="subject">${subject}</section>
+//             <aside class="info">${info}</aside>
+//             <aside>${score}</aside>
+//         </div>
+//     `
+// }
+
+
+const createStudentComponent = (objectArray) => {
+    
     return `
         <div class="student">
-            <h1 class="name">${name}</h1>
-            <section>${subject}</section>
-            <aside>${info}</aside>
-            <aside>${score}</aside>
+            <h1 class="name">${objectArray.name}</h1>
+            <section class="subject">${objectArray.subject}</section>
+            <aside class="info">${objectArray.info}</aside>
+            <aside>${objectArray.score}</aside>
         </div>
     `
 }
@@ -89,21 +102,20 @@ const studentContainer = document.querySelector("#container")
 
 
 for (let i = 0; i < students.length; i++) {
-    const student = students[i]
-    studentContainer.innerHTML += createStudentComponent(
-        student.name,
-        student.subject,
-        student.info,
-        student.score
-    )
-}
-
-for (let i = 0; i < students.length; i++) {
-    const student = students[i];
-    const header = document.querySelectorAll('.name')
-    if (student.score >= 60) {
-        header[i].classList.add('passing');
-    } else {
-        header[i].classList.add('failing');
+    studentContainer.innerHTML += createStudentComponent(students[i])
     }
-}
+
+
+    // for (let i = 0; i < students.length; i++) {
+//     const student = students[i];
+//     const header = document.querySelectorAll('.name')
+//     const section = document.querySelectorAll('.subject')
+//     const aside = document.querySelectorAll('.info')
+//     if (student.score >= 60) {
+//         header[i].classList.add('passing', 'xx-large');
+//         section[i].classList.add('bordered', 'dashed', 'section--padded');
+//         aside[i].classList.add('pushRight');
+//     } else {
+//         header[i].classList.add('failing');
+//     }
+// }
