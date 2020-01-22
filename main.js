@@ -78,8 +78,8 @@ const createStudentComponent = (name, subject, info, score) => {
     return `
         <div class="student">
             <h1 class="name">${name}</h1>
-            <section>${subject}</section>
-            <aside>${info}</aside>
+            <section class="subject">${subject}</section>
+            <aside class="info">${info}</aside>
             <aside>${score}</aside>
         </div>
     `
@@ -101,8 +101,12 @@ for (let i = 0; i < students.length; i++) {
 for (let i = 0; i < students.length; i++) {
     const student = students[i];
     const header = document.querySelectorAll('.name')
+    const section = document.querySelectorAll('.subject')
+    const aside = document.querySelectorAll('.info')
     if (student.score >= 60) {
-        header[i].classList.add('passing');
+        header[i].classList.add('passing', 'xx-large');
+        section[i].classList.add('bordered', 'dashed', 'section--padded');
+        aside[i].classList.add('pushRight');
     } else {
         header[i].classList.add('failing');
     }
